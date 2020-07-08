@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <div className="">
       <Main />
+      <div className="w-screen h-64"></div>
       <Footer />
     </div>
   );

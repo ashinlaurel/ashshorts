@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
 
 import Card from "./Card";
 
@@ -25,9 +26,15 @@ const Main = () => {
   }, []);
 
   return (
-    <div className=" container mx-auto flex flex-col  sm:block my-10 ">
+    <div className=" container mx-auto px-10 sm:px-0 flex flex-col  sm:block my-10 ">
       {posts.map((doc) => (
-        <Card title={doc.title} desc={doc.desc} url={doc.fileurl} />
+        <Card
+          title={doc.title}
+          desc={doc.desc}
+          url={doc.fileurl}
+          user={doc.user}
+          date={moment(doc.createdat).format("DD-MM-YYYY")}
+        />
       ))}
       {/* <Card />
       <Card />

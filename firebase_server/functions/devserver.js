@@ -2,7 +2,7 @@ const express = require("express");
 const admin = require("firebase-admin");
 const firebase = require("firebase");
 const config = require("./firebaseconfig");
-const upload = require("express-fileupload");
+// const upload = require("express-fileupload");
 // const { ref } = require("firebase-functions/lib/providers/database");
 
 const app = express();
@@ -14,7 +14,7 @@ admin.initializeApp();
 
 const cors = require("cors");
 app.use(cors());
-app.use(upload());
+// app.use(upload());
 
 const loginController = require("./Controllers/LoginController");
 const orderFormController = require("./Controllers/OrderFormController");
@@ -42,24 +42,24 @@ app.post("/output", (req, res) => {
   // console.log(req.body);
 });
 
-// app.post("/upload", (req, res) => {
-//   if (req.files == null) {
-//     return res.status(400).json({ msg: "No file uploaded" });
-//   }
-//   const file = req.files.file;
-//   // console.log(file);
-//   // return res.status(200).json();
+app.post("/upload", (req, res) => {
+  if (req.files == null) {
+    return res.status(400).json({ msg: "No file uploaded" });
+  }
+  const file = req.files.file;
+  // console.log(file);
+  // return res.status(200).json();
 
-//   storage.ref(`images/${file.name}`).put(file);
-//   //   .then(() => {
-//   //     // return res.status(200).json();
-//   //     console.log("hello");
-//   //   })
-//   //   .catch((err) => {
-//   //     console.log("Hello");
-//   //     return res.status(500).json({ err: err.code });
-//   //   });
-// });
+  storage.ref(`images/${file.name}`).put(file);
+  //   .then(() => {
+  //     // return res.status(200).json();
+  //     console.log("hello");
+  //   })
+  //   .catch((err) => {
+  //     console.log("Hello");
+  //     return res.status(500).json({ err: err.code });
+  //   });
+});
 
 const PORT = 3001;
 app.listen(PORT, () => {

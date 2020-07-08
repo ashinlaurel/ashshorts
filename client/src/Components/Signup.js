@@ -132,6 +132,7 @@ function Signup(props) {
                         >
                           Password
                         </label>
+
                         <input
                           type="password"
                           className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
@@ -142,6 +143,9 @@ function Signup(props) {
                             setPassword(e.target.value);
                           }}
                         />
+                        <div className=" p-2 text-xs">
+                          Enter password with more than 6 characters
+                        </div>
                       </div>
 
                       <div className="relative w-full mb-3">

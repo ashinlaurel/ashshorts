@@ -13,11 +13,12 @@ const orderFormController = {
     // console.log("here" + { imgfile });
     const neworder = {
       createdat: today,
-      sort_date: new Date(moment().format("YYYY-MM-DD")),
+      sort_date: new Date(),
       title: req.body.title,
       //   name_lower: req.body.name.toLowerCase(),
       desc: req.body.desc,
       fileurl: req.body.fileurl,
+      user: req.body.user,
     };
     // console.log(imgfile);
     // console.log(imgfile);

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { LoginContext } from "../Context/LoginContext";
+
 import axios from "axios";
 import spinner from "../assets/spinner3.gif";
 import { firebase, storage } from "../firebase/index";
 
 export default function Admin() {
+  const { handle } = useContext(LoginContext);
   const theform = {
     title: "",
     desc: "",
@@ -13,6 +16,7 @@ export default function Admin() {
   const [values, setValues] = useState(theform);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
   // const [uploadperc, setUploadperc] = useState("");
   const [file, setFile] = useState("");
   const [url, setUrl] = useState("");
@@ -44,7 +48,12 @@ export default function Admin() {
     const uploadTask = storage.ref(`images/${file.name}`).put(file);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
+      (snapshot) => {
+        const newprogress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(newprogress);
+      },
       (error) => {
         console.log(error);
       },
@@ -91,10 +100,12 @@ export default function Admin() {
     e.preventDefault();
     console.log("Submitted");
     setLoading(true);
+    setProgress(0);
     let passer = {
       title: values.title,
       desc: values.desc,
       fileurl: url,
+      user: handle,
     };
     axios
       .post("/newpost", passer)
@@ -137,7 +148,7 @@ export default function Admin() {
                   type="text"
                   name="title"
                   onChange={handleInput}
-                  value={values.name}
+                  value={values.title}
                 />
               </div>
             </div>
@@ -160,37 +171,48 @@ export default function Admin() {
                   id="inline-full-name"
                   type="text"
                   name="desc"
-                  value={values.orders}
+                  value={values.desc}
                   onChange={handleInput}
                   required
                 />
               </div>
             </div>
-            <form onSubmit={FileSubmit}>
-              <div className="md:flex md:items-center my-6  ">
-                <div className="md:w-1/3">
-                  <label
-                    className=" sm:text-xl block text-gray-800  md:ml-32 mb-1 md:mb-0 pr-4"
-                    for="inline-full-name"
-                  >
-                    Image:
-                  </label>
-                </div>
-                <div className="md:w-2/3">
-                  <input
-                    className="bg-white appearance-none border-2 border-gray-200 
+            {/* <progress value={progress} max="100" /> */}
+          </div>
+          <form onSubmit={FileSubmit}>
+            <div className="md:flex md:items-center my-6  ">
+              <div className="md:w-1/3">
+                <label
+                  className=" sm:text-xl block text-gray-800  md:ml-32 mb-1 md:mb-0 pr-4"
+                  for="inline-full-name"
+                >
+                  Image:
+                </label>
+              </div>
+              <div className="md:w-1/2">
+                <input
+                  className="bg-white appearance-none border-2 border-gray-200 
                     rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none 
                     focus:bg-white focus:border-purple-500"
-                    id="inline-full-Item"
-                    type="file"
-                    name="file"
-                    onChange={handleFileInput}
-                    value={values.name}
-                  />
-                  <input type="submit" />
-                </div>
+                  id="inline-full-Item"
+                  type="file"
+                  name="file"
+                  onChange={handleFileInput}
+                />
               </div>
-            </form>
+              <input
+                className="px-4 py-1 ml-4 rounded-lg bg-blue-500 text-white"
+                type="submit"
+              />
+            </div>
+          </form>
+          <div class="ml-64 w-8/12 relative pt-1">
+            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+              <div
+                style={{ width: `${progress}%` }}
+                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
+              ></div>
+            </div>
 
             <button
               onClick={handleSubmit}

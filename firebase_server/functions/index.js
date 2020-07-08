@@ -1,12 +1,4 @@
 const functions = require("firebase-functions");
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
 const express = require("express");
 const admin = require("firebase-admin");
 const firebase = require("firebase");
@@ -74,3 +66,5 @@ const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server Listening on port ${PORT}`);
 });
+
+exports.api = functions.https.onRequest(app);
