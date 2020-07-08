@@ -11,7 +11,7 @@ function Signup(props) {
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
   const [err, setErr] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setloading] = useState(false);
 
   const {
@@ -36,7 +36,7 @@ function Signup(props) {
       email,
       password,
       confPassword,
-      isAdmin,
+      // isAdmin,
     };
     if (password !== confPassword) setErr("Passwords Do not Match");
     else {
@@ -45,7 +45,7 @@ function Signup(props) {
           // console.log(res);
           setisLoggedIn(true);
           setHandle(username);
-          setAdmin(isAdmin);
+          // setAdmin(isAdmin);
           // setUserToken(res)
           setUsername("");
           setEmail("");
@@ -61,17 +61,17 @@ function Signup(props) {
         });
     }
   };
-  const handleCheckBox = (e) => {
-    setIsAdmin(e.target.checked);
-  };
+  // const handleCheckBox = (e) => {
+  //   setIsAdmin(e.target.checked);
+  // };
 
   return (
     <>
       {/* {isLoggedIn && Admin ? ( */}
       <main>
-        <div className="text-xl"> </div>
+        <div className="text-xl "> </div>
         <section className="absolute w-full h-full">
-          <div className="absolute top-0 w-full h-full bg-gray-100"></div>
+          <div className="absolute top-0 w-full h-full gradblack"></div>
           <div className="container mx-auto px-4 h-full">
             <div className="flex content-center items-center justify-center h-full">
               <div className="w-full lg:w-4/12 px-4">
@@ -162,14 +162,14 @@ function Signup(props) {
                           }}
                         />
                       </div>
-                      <label class="md:w-2/3 block text-gray-500 font-bold">
+                      {/* <label class="md:w-2/3 block text-gray-500 font-bold">
                         <input
                           class="mr-2 leading-tight"
                           type="checkbox"
                           onChange={(e) => handleCheckBox(e)}
                         />
                         <span class="text-sm">Admin Account</span>
-                      </label>
+                      </label> */}
 
                       <div className="text-center mt-6">
                         <button

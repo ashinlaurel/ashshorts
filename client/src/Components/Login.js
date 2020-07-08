@@ -34,7 +34,7 @@ function Login(props) {
         let user = res.data;
         setisLoggedIn(true);
         setHandle(user.handle);
-        setAdmin(user.isAdmin);
+        // setAdmin(user.isAdmin);
         // console.log(user);
         setEmail("");
         setPassword("");
@@ -55,7 +55,7 @@ function Login(props) {
             <main>
               <section className="absolute w-full h-full">
                 <div
-                  className="absolute top-0 w-full h-full bg-gray-100"
+                  className="absolute top-0 w-full h-full gradblack "
                   // style={{
                   //   backgroundImage:
                   //     // "url(" + require("assets/img/register_bg_2.png") + ")",

@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import LoginContextProvider from "./Context/LoginContext";
 import Navbar from "./Components/Navbar";
+import Admin from "./Components/Admin";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -15,10 +16,13 @@ function App() {
     <div className="App">
       <LoginContextProvider>
         {" "}
-        <Navbar />
         <BrowserRouter>
+          <Navbar />
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/admin">
+            <Admin />
           </Route>
           <Route exact path="/login">
             <Login />

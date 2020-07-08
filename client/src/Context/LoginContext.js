@@ -6,7 +6,7 @@ const LoginContextProvider = (props) => {
   const [isLoggedIn, setisLoggedIn] = useState(true);
   const [handle, setHandle] = useState("");
   const [userToken, setUserToken] = useState("");
-  const [Admin, setAdmin] = useState(true);
+  // const [Admin, setAdmin] = useState(true);
   // const [handle, setHandle] = useState("test");
   return (
     <LoginContext.Provider
@@ -17,8 +17,8 @@ const LoginContextProvider = (props) => {
         setHandle,
         userToken,
         setUserToken,
-        Admin,
-        setAdmin,
+        // Admin,
+        // setAdmin,
       }}
     >
       {props.children}
