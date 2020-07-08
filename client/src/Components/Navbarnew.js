@@ -38,8 +38,8 @@ const Navbarnew = (props) => {
   };
   return (
     <div className=" text-black ">
-      <header class=" navbg md:flex md:items-center md:justify-between p-3 shadow-lg">
-        <div class="container mx-auto flex items-center justify-between md:mb-0">
+      <header class="  md:flex md:items-center md:justify-between p-3 shadow-lg">
+        <div class=" px-5 md:px-20 flex items-center justify-between md:mb-0">
           <h1
             class="leading-none text-base sm:text-2xl text-grey-darkest heading"
             id="heading"
@@ -62,7 +62,7 @@ const Navbarnew = (props) => {
         </div>
 
         <nav className="hidden md:inline " id="drop">
-          <ul class="list-reset md:flex md:items-center font-bold uppercase mr-5 ">
+          <ul class="list-reset md:flex md:items-center font-bold uppercase mr-10 px-10 ">
             <li class="md:ml-4">
               <Link
                 onClick={() => closeDrop()}
@@ -93,7 +93,7 @@ const Navbarnew = (props) => {
               </Link>
             </li>
             {isLoggedIn ? null : (
-              <li class="md:ml-4">
+              <li class="md:ml-4 ">
                 <Link
                   onClick={() => closeDrop()}
                   class="border-t block no-underline py-2 text-grey-darkest  md:border-none md:p-0"

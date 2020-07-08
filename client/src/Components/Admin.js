@@ -206,7 +206,7 @@ export default function Admin() {
               />
             </div>
           </form>
-          <div class="ml-64 w-8/12 relative pt-1">
+          <div class="sm:ml-64 w-8/12 relative pt-1">
             <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
               <div
                 style={{ width: `${progress}%` }}

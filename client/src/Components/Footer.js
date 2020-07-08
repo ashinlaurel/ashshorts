@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div class="w-1/2 flex text-sm mt-6 lg:mt-0 mx-20"></div>
         <div className="flex flex-col ">
-          <div className="text-2xl font-bold">SpaceNos Internship Test</div>
+          <div className="text-2xl font-bold">Internship Test</div>
           <div className="text-md font-bold">Developed By Ashin Laurel</div>
 
           <div className="text-sm">Phone:+91 9496249657 </div>
